@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "firstName": "Varghese",
+      "lastName": "Joseph",
+      "email": "varghese9@yahoo.com",
+      "password": "111",
+      "_id": "b065d73f-b7cd-4f5e-bdf9-0f613056d001"
+    },
+    {
+      "firstName": "Poonam",
+      "lastName": "Jaswal",
+      "email": "varghessde00@gmail.com",
+      "password": "111",
+      "_id": "91a85124-d340-4dde-aa72-bc06db04a457"
+    }
+  ]
+}

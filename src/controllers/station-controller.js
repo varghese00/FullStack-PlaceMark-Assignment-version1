@@ -1,4 +1,5 @@
 import { db } from "../models/db.js";
+import { LocationSpec } from "../models/joi-schemas.js";
 
 export const stationController = {
   index: {
@@ -13,6 +14,13 @@ export const stationController = {
   },
 
   addLocation: {
+    validate: {
+      payload: LocationSpec,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("station-view", { title: "Add location error", errors: error.details }).takeover().code(400);
+      },
+    },
     handler: async function (request, h) {
       const station = await db.stationStore.getStationById(request.params.id);
       const newLocation = {
