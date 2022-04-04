@@ -24,4 +24,12 @@ export const stationController = {
       return h.redirect(`/station/${station._id}`);
     },
   },
+
+  deleteLocation: {
+    handler: async function(request, h) {
+      const station = await db.stationStore.getStationById(request.params.id);
+      await db.locationStore.deleteLocation(request.params.locationid);
+      return h.redirect(`/station/${station._id}`);
+    },
+  },
 };

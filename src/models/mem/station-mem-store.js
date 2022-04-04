@@ -8,6 +8,10 @@ export const stationMemStore = {
     return stations;
   },
 
+  async getUserStations(userid) {
+    return stations.filter((station) => station.userid === userid);
+  },
+
   async addStation(station) {
     station._id = v4();
     stations.push(station);

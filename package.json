@@ -18,8 +18,10 @@
     "prettier": "^2.6.1"
   },
   "dependencies": {
+    "@hapi/cookie": "^11.0.2",
     "@hapi/hapi": "^20.2.1",
     "@hapi/vision": "^6.1.0",
+    "dotenv": "^16.0.0",
     "handlebars": "^4.7.7",
     "uuid": "^8.3.2"
   }

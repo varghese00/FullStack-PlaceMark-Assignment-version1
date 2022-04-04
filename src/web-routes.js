@@ -17,5 +17,7 @@ export const webRoutes = [
     { method: "POST", path: "/dashboard/addStation", config: dashboardController.addStation },
     { method: "GET", path: "/station/{id}", config: stationController.index },
     { method: "POST", path: "/station/{id}/addLocation", config: stationController.addLocation },
+    { method: "GET", path: "/dashboard/deleteStation/{id}", config: dashboardController.deleteStation },
+    { method: "GET", path: "/station/{id}/deleteLocation/{locationid}", config: stationController.deleteLocation },
 
 ];
