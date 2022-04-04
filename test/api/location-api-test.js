@@ -2,17 +2,21 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { chargingStationService } from "./chargingStation-service.js";
-import { maggie, locationArea, testLocations, testStations, county } from "../fixtures.js"
+import { maggie,maggieCredentials, locationArea, testLocations, testStations, county } from "../fixtures.js"
 
 suite("location API tests", () => {
   let user = null;
   let stationModel = null;
 
   setup(async () => {
+    chargingStationService.clearAuth();
     user = await chargingStationService.createUser(maggie);
+    await chargingStationService.authenticate(maggieCredentials)
     await chargingStationService.deleteAllStations();
-    await chargingStationService.deleteAllUsers();
     await chargingStationService.deleteAllLocations();
+    await chargingStationService.deleteAllUsers();
+    user = await chargingStationService.createUser(maggie);
+    await chargingStationService.authenticate(maggieCredentials)
     county.userid = user._id;
     stationModel = await chargingStationService.createStation(county);
   });

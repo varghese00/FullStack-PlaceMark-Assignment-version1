@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import axios from "axios";
 
 
@@ -9,6 +10,18 @@ import { serviceUrl } from "../fixtures.js";
 export const chargingStationService={
 
     stationUrl: serviceUrl,
+
+    async authenticate(user) {
+      const response = await axios.post(`${this.stationUrl}/api/users/authenticate`, user);
+      // eslint-disable-next-line dot-notation
+      // eslint-disable-next-line prefer-template
+      axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+      return response.data;
+    },
+  
+    async clearAuth() {
+      axios.defaults.headers.common["Authorization"] = "";
+    },
 
     async createUser(user) {
       const res = await axios.post(`${this.stationUrl}/api/users`, user);

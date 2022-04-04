@@ -9,10 +9,10 @@ export const maggie = {
 
 
   export const maggieCredentials = {
-
     email: "maggie@simpson.com",
     password: "secret",
   };
+  
 // array of users
   export const testUsers = [
     {

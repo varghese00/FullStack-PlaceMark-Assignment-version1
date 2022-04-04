@@ -6,8 +6,9 @@ import { validationError } from "./logger.js";
 
 export const locationApi = {
   find: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
       try {
         const locations = await db.locationStore.getAllLocations();
         return locations;
@@ -24,8 +25,9 @@ export const locationApi = {
 
 
   findOne: {
-    auth: false,
-    async handler(request) {
+    auth: {
+      strategy: "jwt",
+    },    async handler(request) {
       try {
         const location = await db.locationStore.getLocationById(request.params.id);
         if (!location) {
@@ -44,8 +46,9 @@ export const locationApi = {
   },
 
   create: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
       try {
         const location = await db.locationStore.addLocation(request.params.id, request.payload);
         if (location) {
@@ -66,8 +69,9 @@ export const locationApi = {
 
 
   deleteAll: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
       try {
         await db.locationStore.deleteAllLocations();
         return h.response().code(204);
@@ -80,8 +84,9 @@ export const locationApi = {
   },
 
   deleteOne: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
       try {
         const location = await db.locationStore.getLocationById(request.params.id);
         if (!location) {

@@ -8,6 +8,9 @@ import dotenv from "dotenv"
 import Joi from "joi";
 import Inert from "@hapi/inert"
 import HapiSwagger from "hapi-swagger";
+import jwt from "hapi-auth-jwt2";
+import { validate } from "./api/jwt-utils.js";
+
 
 
 import { accountsController } from "./controllers/accounts-controller.js";
@@ -35,13 +38,23 @@ async function init() {
     info:{
       title: "Electric Charging Station API",
       version:"0.1"
-    }
+    },
+    securityDefinitions: {
+      jwt: {
+        type: "apiKey",
+        name: "Authorization",
+        in: "Header"
+      }
+    },
+    security: [{ jwt: [] }]
 }
 
 
   await server.register(Vision);
   await server.register(Cookie);
   server.validator(Joi)
+
+
   await server.register(Inert);
   await server.register([
     Inert,
@@ -51,6 +64,16 @@ async function init() {
       options: swaggerOptions,
     },
   ]);
+
+
+
+  await server.register(jwt);
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.cookie_password,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] }
+  });
+
 
 
 

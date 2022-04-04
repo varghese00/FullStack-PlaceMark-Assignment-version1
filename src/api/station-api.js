@@ -5,8 +5,9 @@ import { IdSpec,StationArraySpec,StationSpec,StationSpecPlus } from "../models/j
 
 export const stationApi = {
   find: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
         try {
             const stations = await db.stationStore.getAllStations();
             return stations;
@@ -21,8 +22,9 @@ export const stationApi = {
   },
 
   findOne: {
-    auth: false,
-    async handler(request) {
+    auth: {
+      strategy: "jwt",
+    },    async handler(request) {
         try {
             const station = await db.stationStore.getStationById(request.params.id);
             if (!station) {
@@ -41,8 +43,9 @@ export const stationApi = {
   },
 
   create: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
         try{
             const station= request.payload;
             const newStation= await db.stationStore.addStation(station);
@@ -63,8 +66,9 @@ export const stationApi = {
   },
 
   deleteOne: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
         try {
             const station = await db.stationStore.getStationById(request.params.id);
             if (!station) {
@@ -82,8 +86,9 @@ export const stationApi = {
   },
 
   deleteAll: {
-    auth: false,
-    handler: async function (request, h) {
+    auth: {
+      strategy: "jwt",
+    },    handler: async function (request, h) {
         try{
         await db.stationStore.deleteAllStations();
         return h.response().code(204);

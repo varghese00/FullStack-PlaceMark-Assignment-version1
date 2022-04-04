@@ -1,16 +1,20 @@
 import { assert } from "chai";
 import { chargingStationService } from "./chargingStation-service.js";
 import { assertSubset } from "../test-utils.js";
-import {maggie,county,testStations} from "../fixtures.js"
+import {maggie, maggieCredentials, county,testStations} from "../fixtures.js"
 
 suite("Station API tests", () => {
 
     let user=null;
 
   setup(async () => {
+      chargingStationService.clearAuth();
+      user = chargingStationService.createUser(maggie);
+      await chargingStationService.authenticate(maggieCredentials)
       await chargingStationService.deleteAllStations();
       await chargingStationService.deleteAllUsers();
       user = chargingStationService.createUser(maggie);
+      await chargingStationService.authenticate(maggieCredentials)
       county.userid=user._id;
   });
 
