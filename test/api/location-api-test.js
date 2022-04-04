@@ -9,10 +9,10 @@ suite("location API tests", () => {
   let stationModel = null;
 
   setup(async () => {
+    user = await chargingStationService.createUser(maggie);
     await chargingStationService.deleteAllStations();
     await chargingStationService.deleteAllUsers();
     await chargingStationService.deleteAllLocations();
-    user = await chargingStationService.createUser(maggie);
     county.userid = user._id;
     stationModel = await chargingStationService.createStation(county);
   });

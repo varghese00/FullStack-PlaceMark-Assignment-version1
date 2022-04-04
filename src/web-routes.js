@@ -20,4 +20,10 @@ export const webRoutes = [
     { method: "GET", path: "/dashboard/deleteStation/{id}", config: dashboardController.deleteStation },
     { method: "GET", path: "/station/{id}/deleteLocation/{locationid}", config: stationController.deleteLocation },
 
+
+
+    // to handle images in public folder..uses npm inert plugin
+    { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+
+
 ];

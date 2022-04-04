@@ -7,6 +7,12 @@ export const maggie = {
     password: "secret",
   };
 
+
+  export const maggieCredentials = {
+
+    email: "maggie@simpson.com",
+    password: "secret",
+  };
 // array of users
   export const testUsers = [
     {
@@ -52,7 +58,7 @@ export const maggie = {
   };
   
   export const locationArea = {
-    "name": "Violin Concerto No. 3",
+    "name": "Dunmore",
     "latitude": 30,
     "longitude": 15
   };

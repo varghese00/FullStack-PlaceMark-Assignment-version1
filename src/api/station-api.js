@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { validationError } from "./logger.js";
+import { IdSpec,StationArraySpec,StationSpec,StationSpecPlus } from "../models/joi-schemas.js";
 
 export const stationApi = {
   find: {
@@ -12,6 +14,10 @@ export const stationApi = {
             return Boom.serverUnavailable("Database Error");
           }
     },
+    tags:["api"],
+    response: {schema: StationArraySpec, failAction:validationError},
+    description: "Get all stations",
+    notes: "Returns all stations"
   },
 
   findOne: {
@@ -27,6 +33,11 @@ export const stationApi = {
             return Boom.serverUnavailable("No station with this id");
           }
     },
+    tags:["api"],
+    response: {schema: StationSpecPlus, failAction:validationError},
+    description: "Find a station",
+    notes: "Returns all station",
+    validate:{ params: { id: IdSpec }, failAction: validationError },
   },
 
   create: {
@@ -43,8 +54,12 @@ export const stationApi = {
         catch(err){
             return Boom.serverUnavailable("Database server error")
         }
-
     },
+    tags:["api"],
+    response: {schema: StationSpecPlus, failAction:validationError},
+    description: "Create a station",
+    notes: "Returns newly created station",
+    validate:{ payload: StationSpec, failAction: validationError },
   },
 
   deleteOne: {
@@ -61,6 +76,9 @@ export const stationApi = {
             return Boom.serverUnavailable("No station with this id");
           }
     },
+    tags: ["api"],
+    description: "Delete a station",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 
   deleteAll: {
@@ -74,6 +92,8 @@ export const stationApi = {
         return Boom.serverUnavailable("Database Error")
         }
     },
+    tags: ["api"],
+    description: "Delete all StationApi",
   },
 
 
