@@ -46,3 +46,33 @@ export const maggie = {
       name: "Waterford"
     }
   ];
+
+  export const countyName = {
+    name: "Cork"
+  };
+  
+  export const locationArea = {
+    "name": "Violin Concerto No. 3",
+    "latitude": 30,
+    "longitude": 15
+  };
+  
+
+
+  export const testLocations = [
+    {
+      "name": "Tramore",
+      "latitude": 7,
+      "longitude": 5
+    },
+    {
+      "name": "Dunmore",
+      "latitude": 10,
+      "longitude": 6
+    },
+    {
+      "name": "Dungarvan",
+      "latitude": 20,
+      "longitude": 4
+    }
+  ];

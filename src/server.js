@@ -31,6 +31,7 @@ async function init() {
   await server.register(Cookie);
   server.validator(Joi)
 
+  // auth strategy for cookies
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: process.env.COOKIE_NAME,
@@ -42,7 +43,7 @@ async function init() {
   });
   server.auth.default("session");
 
-
+// handlebars views rendering
   server.views({
     engines: {
       hbs: Handlebars,
@@ -55,8 +56,8 @@ async function init() {
     isCached: false,
   });
 
-
-  db.init()
+// mongo must be added here and also inititated in .env
+  db.init("mongo")
   server.route(webRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);

@@ -1,11 +1,13 @@
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
 import { testStations, county } from "./fixtures.js";
+import {assertSubset} from "./test-utils.js"
+
 
 suite("Station Model tests", () => {
 
   setup(async () => {
-    db.init("json");
+    db.init("mongo");
     await db.stationStore.deleteAllStations();
     for (let i = 0; i < testStations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
@@ -15,7 +17,7 @@ suite("Station Model tests", () => {
 
   test("create a station", async () => {
     const station = await db.stationStore.addStation(county);
-    assert.equal(county, station);
+    assertSubset(county, station);
     assert.isDefined(station._id);
   });
 
@@ -30,14 +32,14 @@ suite("Station Model tests", () => {
   test("get a station - success", async () => {
     const station = await db.stationStore.addStation(county);
     const returnedStation = await db.stationStore.getStationById(station._id);
-    assert.equal(county, station);
+    assertSubset(county, station);
   });
 
   test("delete One Station - success", async () => {
     const id = testStations[0]._id;
     await db.stationStore.deleteStationById(id);
     const returnedPlaylists = await db.stationStore.getAllStations();
-    assert.equal(returnedPlaylists.length, testStations.length - 1);
+    assertSubset(returnedPlaylists.length, testStations.length - 1);
     const deletedStation = await db.stationStore.getStationById(id);
     assert.isNull(deletedStation);
   });
@@ -50,6 +52,6 @@ suite("Station Model tests", () => {
   test("delete One Station - fail", async () => {
     await db.stationStore.deleteStationById("bad-id");
     const allStations = await db.stationStore.getAllStations();
-    assert.equal(testStations.length, allStations.length);
+    assertSubset(testStations.length, allStations.length);
   });
 });

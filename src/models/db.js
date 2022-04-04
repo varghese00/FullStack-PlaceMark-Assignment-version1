@@ -6,6 +6,10 @@ import { userJsonStore } from "./json/user-json-store.js";
 import { stationJsonStore } from "./json/station-json-store.js";
 import { locationJsonStore } from "./json/location-json-store.js";
 
+import {connectMongo} from "./mongo/connect.js"
+import { userMongoStore } from "./mongo/user-mongo-store.js";
+import { stationMongoStore } from "./mongo/station-mongo-store.js";
+import { locationMongoStore } from "./mongo/location-mongo-store.js";
 
 
 export const db = {
@@ -20,6 +24,12 @@ export const db = {
         this.stationStore = stationJsonStore;
         this.locationStore=locationJsonStore;
         break;
+        case "mongo":
+          this.userStore = userMongoStore;
+          this.stationStore= stationMongoStore;
+          this.locationStore=locationMongoStore;
+          connectMongo();
+          break;
       default:
         this.userStore = userMemStore;
         this.stationStore = stationMemStore;
