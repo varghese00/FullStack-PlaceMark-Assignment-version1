@@ -18,8 +18,10 @@ export const dashboardController = {
     validate: {
       payload: StationSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Add Station error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const loggedInUser = request.auth.credentials;
+        const stations = await db.stationStore.getUserStations(loggedInUser._id);
+        return h.view("dashboard-view", { title: "Add Station error",stations:stations, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {

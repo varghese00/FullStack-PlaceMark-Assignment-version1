@@ -17,8 +17,10 @@ export const stationController = {
     validate: {
       payload: LocationSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("station-view", { title: "Add location error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const station= await db.stationStore.getStationById(request.params.id);
+          return h.view("station-view",{title: "Error adding location",station:station,errors:error.details}).takeover().code(400);
+        
       },
     },
     handler: async function (request, h) {

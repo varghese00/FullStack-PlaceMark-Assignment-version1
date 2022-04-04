@@ -1,18 +1,18 @@
 {
   "users": [
     {
-      "firstName": "Varghese",
-      "lastName": "Joseph",
-      "email": "varghese9@yahoo.com",
-      "password": "111",
-      "_id": "b065d73f-b7cd-4f5e-bdf9-0f613056d001"
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "_id": "95bcaf44-6cd0-43fe-8406-eb52604c3fc2"
     },
     {
-      "firstName": "Poonam",
-      "lastName": "Jaswal",
-      "email": "varghessde00@gmail.com",
-      "password": "111",
-      "_id": "91a85124-d340-4dde-aa72-bc06db04a457"
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "_id": "153b7200-4fc2-40a0-a4e1-b027847b4009"
     }
   ]
 }

@@ -1,19 +1,16 @@
 {
   "stations": [
     {
-      "userid": "b065d73f-b7cd-4f5e-bdf9-0f613056d001",
-      "name": "",
-      "_id": "a76b2a29-af2a-4bb9-a2c0-a9355b3f6600"
-    },
-    {
-      "userid": "b065d73f-b7cd-4f5e-bdf9-0f613056d001",
-      "name": "",
-      "_id": "ee751edc-7272-4f65-8fef-e2249a8be828"
-    },
-    {
-      "userid": "91a85124-d340-4dde-aa72-bc06db04a457",
       "name": "Cork",
-      "_id": "4c3e6074-9f67-47e9-8d90-c3cf2418ff09"
+      "_id": "5c7d570f-a0a8-4556-aff9-b55ad19824a4"
+    },
+    {
+      "name": "Kerry",
+      "_id": "d23bcfa0-ad09-4d1e-903b-7d1c07252d92"
+    },
+    {
+      "name": "Waterford",
+      "_id": "ca0ca196-5ed9-42fe-9ae4-93f0342f35f8"
     }
   ]
 }

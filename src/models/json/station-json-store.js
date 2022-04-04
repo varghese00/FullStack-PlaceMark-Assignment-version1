@@ -27,19 +27,25 @@ export const stationJsonStore = {
 
   async getStationById(id) {
     await db.read();
-    const list= db.data.stations.find((station) => station._id === id);
-    list.locations= await locationJsonStore.getLocationsByStationId(list._id);
+    let list= db.data.stations.find((station) => station._id === id);
+    if (list){
+      list.locations= await locationJsonStore.getLocationsByStationId(list._id);
+
+    }
+    else {
+      list=null
+    }
     return list;
   },
 
   async deleteStationById(id) {
     await db.read();
     const index = db.data.stations.findIndex((station) => station._id === id);
-    db.data.stations.splice(index, 1);
+    if (index !==-1) db.data.stations.splice(index, 1);
     await db.write();
   },
 
-  async deleteAllstations() {
+  async deleteAllStations() {
     db.data.stations = [];
     await db.write();
   },

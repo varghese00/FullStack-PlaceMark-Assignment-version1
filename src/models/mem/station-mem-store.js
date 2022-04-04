@@ -20,16 +20,19 @@ export const stationMemStore = {
 
   async getStationById(id) {
     const list= stations.find((station) => station._id === id);
+   if (list){
     list.locations= await locationMemStore.getLocationsByStationId(list._id);
-    return list;
+   return list;
+  } 
+    return null;
   },
 
   async deleteStationById(id) {
     const index = stations.findIndex((station) => station._id === id);
-    stations.splice(index, 1);
+    if (index !==-1) stations.splice(index, 1);
   },
 
-  async deleteAllstations() {
+  async deleteAllStations() {
     stations = [];
   },
 };

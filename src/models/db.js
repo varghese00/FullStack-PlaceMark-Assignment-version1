@@ -1,6 +1,6 @@
-// import { userMemStore } from "./mem/user-mem-store.js";
-// import { stationMemStore } from "./mem/station-mem-store.js";
-// import { locationMemStore } from "./mem/location-mem-store.js";
+import { userMemStore } from "./mem/user-mem-store.js";
+import { stationMemStore } from "./mem/station-mem-store.js";
+import { locationMemStore } from "./mem/location-mem-store.js";
 
 import { userJsonStore } from "./json/user-json-store.js";
 import { stationJsonStore } from "./json/station-json-store.js";
@@ -13,10 +13,17 @@ export const db = {
   stationStore: null,
   locationStore:null,
 
-  init() {
-    this.userStore = userJsonStore;
-    this.stationStore = stationJsonStore;
-    this.locationStore=locationJsonStore;
-
+  init(storeType) {
+    switch(storeType) {
+      case "json":
+        this.userStore = userJsonStore;
+        this.stationStore = stationJsonStore;
+        this.locationStore=locationJsonStore;
+        break;
+      default:
+        this.userStore = userMemStore;
+        this.stationStore = stationMemStore;
+        this.locationStore=locationMemStore;
+    }
   },
 };
