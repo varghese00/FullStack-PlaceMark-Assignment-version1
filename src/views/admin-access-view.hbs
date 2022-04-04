@@ -1,0 +1,63 @@
+{{> menu active="admin-access"}}
+
+
+
+<div class="box">
+
+    <table class="table is-fullwidth">
+    <thead>
+            <h1 class="title">Application Analytics </h1>
+
+        <tr>
+            <th>Item</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+               Total Signed-Up Users
+            </td>
+            <td>
+                {{users.length}}
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                No. Of Counties Added
+            </td>
+            <td>
+                {{stations.length}}
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                No. Of Locations Added
+            </td>
+            <td>
+               {{locations.length}}
+            </td>
+        </tr>     
+        <tr>
+            <td>
+                Most Added County
+            </td>
+            <td>
+                {{analytics.mostAddedCounty}}
+            </td>
+        </tr> 
+        <tr>
+            <td>
+                Least Added County 
+            </td>
+            <td>
+                {{analytics.leastAddedCounty}}
+            </td>
+        </tr>
+    </tbody>
+  </div>
+
+  <section class="section">
+   {{> list-users}}
+  
+</section>

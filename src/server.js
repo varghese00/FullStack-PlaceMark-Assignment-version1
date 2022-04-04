@@ -17,13 +17,16 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { apiRoutes } from "./api-routes.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
+import { Admin } from "./models/mongo/admin.js";
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function init() {
   const server = Hapi.server({
-    port: 3000,
+    port: process.env.PORT || 3000,
     host: "localhost",
   });
 
@@ -53,6 +56,7 @@ async function init() {
   await server.register(Vision);
   await server.register(Cookie);
   server.validator(Joi)
+
 
 
   await server.register(Inert);
@@ -108,7 +112,10 @@ async function init() {
   server.route(apiRoutes)
   await server.start();
   console.log("Server running on %s", server.info.uri);
+  console.log(Admin())
+
 }
+
 
 process.on("unhandledRejection", (err) => {
   console.log(err);

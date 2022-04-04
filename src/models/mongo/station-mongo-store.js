@@ -7,6 +7,13 @@ export const stationMongoStore = {
     return stations;
   },
 
+  async getAllStationsByName() {
+    const stations = await Station.findAll().lean();
+    return stations.name;
+  },
+
+
+
   async getStationById(id) {
     if (id) {
       const station = await Station.findOne({ _id: id }).lean();
