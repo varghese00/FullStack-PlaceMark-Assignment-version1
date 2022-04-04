@@ -27,7 +27,6 @@ const __dirname = path.dirname(__filename);
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
-    host: "localhost",
   });
 
   const result= dotenv.config();
