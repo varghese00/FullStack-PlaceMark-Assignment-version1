@@ -33,6 +33,9 @@ export const UserArray = Joi.array().items(UserSpec).label("UserArray");
     name: Joi.string().required().example("Dunmore"),
     latitude: Joi.number().example(32).required(),
     longitude: Joi.number().example(18).required(),
+    category:Joi.string().example("Type 2 Plug").required(),
+    description: Joi.string().example("Tesco Shopping Centre").required(),
+
   })
   .label("Location");
 

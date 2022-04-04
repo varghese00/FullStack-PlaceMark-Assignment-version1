@@ -2,6 +2,8 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { stationController } from "./controllers/station-controller.js";
+import { locationController } from "./controllers/location-controller.js";
+
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -16,9 +18,13 @@ export const webRoutes = [
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addStation", config: dashboardController.addStation },
     { method: "GET", path: "/station/{id}", config: stationController.index },
-    { method: "POST", path: "/station/{id}/addLocation", config: stationController.addLocation },
     { method: "GET", path: "/dashboard/deleteStation/{id}", config: dashboardController.deleteStation },
+
+
+    { method: "POST", path: "/station/{id}/addLocation", config: stationController.addLocation },
     { method: "GET", path: "/station/{id}/deleteLocation/{locationid}", config: stationController.deleteLocation },
+    { method: "GET", path: "/station/{id}/location/{locationid}", config: locationController.showLocationView },
+    { method: "POST", path: "/station/{id}/location/{locationid}", config: locationController.update },
 
 
 

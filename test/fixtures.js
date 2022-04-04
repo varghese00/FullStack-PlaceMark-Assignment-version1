@@ -60,7 +60,9 @@ export const maggie = {
   export const locationArea = {
     "name": "Dunmore",
     "latitude": 30,
-    "longitude": 15
+    "longitude": 15,
+    "category": "Some type of plug",
+    "description":"Some description",
   };
   
 
@@ -69,17 +71,23 @@ export const maggie = {
     {
       "name": "Tramore",
       "latitude": 7,
-      "longitude": 5
+      "longitude": 5,
+      "category": "Some type of plug",
+      "description":"Some description",
     },
     {
       "name": "Dunmore",
       "latitude": 10,
-      "longitude": 6
+      "longitude": 6,
+      "category": "type of plug",
+      "description":"Your description",
     },
     {
       "name": "Dungarvan",
       "latitude": 20,
-      "longitude": 4
+      "longitude": 4,
+      "category": "Any type of plug",
+      "description":"Any description",
     }
   ];
 

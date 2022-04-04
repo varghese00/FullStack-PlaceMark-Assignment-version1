@@ -4,7 +4,7 @@ export const locationMongoStore = {
 
     
   async getLocationsByStationId(id) {
-    const locations = await Location.find({ locationid: id }).lean();
+    const locations = await Location.find({ stationid: id }).lean();
     return locations;
   },
 
@@ -29,6 +29,8 @@ export const locationMongoStore = {
     return null;
   },
 
+
+
   async deleteLocation(id) {
     try {
       await Location.deleteOne({ _id: id });
@@ -41,11 +43,16 @@ export const locationMongoStore = {
     await Location.deleteMany({});
   },
 
-  async updateLocation(location, updatedLocation) {
+  async updateLocation(locationid, updatedLocation) {
+    const location= await Location.findOne({_id:locationid})
     location.name = updatedLocation.name;
     location.latitude = updatedLocation.latitude;
     location.longitude = updatedLocation.longitude;
+    location.category= updatedLocation.category;
+    location.description= updatedLocation.description;
     await location.save();
   },
+
+
 };
 

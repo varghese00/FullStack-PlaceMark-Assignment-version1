@@ -8,7 +8,8 @@ export const locationApi = {
   find: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },    
+    handler: async function (request, h) {
       try {
         const locations = await db.locationStore.getAllLocations();
         return locations;
@@ -27,7 +28,8 @@ export const locationApi = {
   findOne: {
     auth: {
       strategy: "jwt",
-    },    async handler(request) {
+    },    
+    async handler(request) {
       try {
         const location = await db.locationStore.getLocationById(request.params.id);
         if (!location) {
@@ -45,10 +47,13 @@ export const locationApi = {
     response: { schema: LocationSpecPlus, failAction: validationError },
   },
 
+
+
   create: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },    
+    handler: async function (request, h) {
       try {
         const location = await db.locationStore.addLocation(request.params.id, request.payload);
         if (location) {
@@ -71,7 +76,8 @@ export const locationApi = {
   deleteAll: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },    
+    handler: async function (request, h) {
       try {
         await db.locationStore.deleteAllLocations();
         return h.response().code(204);
@@ -86,7 +92,8 @@ export const locationApi = {
   deleteOne: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },    
+    handler: async function (request, h) {
       try {
         const location = await db.locationStore.getLocationById(request.params.id);
         if (!location) {

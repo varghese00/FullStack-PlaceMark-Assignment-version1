@@ -4,6 +4,8 @@
       <th>Location Name</th>
       <th>Latitiude</th>
       <th>Longitude</th>
+      <th>Category</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +20,18 @@
         <td>
           {{longitude}}
         </td>
-                <td>
+        <td>
+          {{category}}
+        </td>
+        <td>
+          {{description}}
+        </td>
+          <td>
+          <a href="/station/{{../station._id}}/location/{{_id}}" class="ui icon button">
+            <i class="fas fa-pen"></i>
+            </a>
+        </td>
+         <td>
           <a href="/station/{{../station._id}}/deleteLocation/{{_id}}" class="ui icon button">
             <i class="fas fa-trash"></i>
           </a>

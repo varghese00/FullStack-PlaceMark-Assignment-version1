@@ -29,6 +29,8 @@ export const stationController = {
         name: request.payload.name,
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
+        category:request.payload.category,
+        description:request.payload.description,
       };
       await db.locationStore.addLocation(station._id, newLocation);
       return h.redirect(`/station/${station._id}`);

@@ -13,6 +13,13 @@
       "email": "bart@simpson.com",
       "password": "secret",
       "_id": "153b7200-4fc2-40a0-a4e1-b027847b4009"
+    },
+    {
+      "firstName": "Varghese",
+      "lastName": "Joseph",
+      "email": "varghese9@yahoo.com",
+      "password": "111",
+      "_id": "d7782fe4-102e-49a4-86b4-88c882ba0281"
     }
   ]
 }

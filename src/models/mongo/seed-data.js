@@ -47,18 +47,24 @@ export const seedData = {
         name: "Dungarvan",
         latitude: 30,
         longitude: 15,
+        category:"Type 1 Plug",
+        description:"On-street Parking",
         stationid: "->stations.county_1"
       },
       location_2 : {
         name: "Youghal",
         latitude: 20,
         longitude: 10,
+        category:"Type 2 Plug",
+        description:"Tesco Parking",
         stationid: "->stations.county_2"
       },
       location_3 : {
         name: "Tralee",
         latitude: 60,
         longitude: 10,
+        category:"Tesla Super Charger",
+        description:"Fuel Station",
         stationid: "->stations.county_3"
       },
     }

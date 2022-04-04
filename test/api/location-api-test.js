@@ -2,9 +2,9 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { chargingStationService } from "./chargingStation-service.js";
-import { maggie,maggieCredentials, locationArea, testLocations, testStations, county } from "../fixtures.js"
+import { maggie,maggieCredentials, locationArea, testLocations, county } from "../fixtures.js"
 
-suite("location API tests", () => {
+suite("Location API tests", () => {
   let user = null;
   let stationModel = null;
 
@@ -23,12 +23,12 @@ suite("location API tests", () => {
 
   teardown(async () => {});
 
-  test("create location", async () => {
+  test("Create Location", async () => {
     const returnedLocation = await chargingStationService.createLocation(stationModel._id, locationArea);
     assertSubset(locationArea, returnedLocation);
   });
 
-  test("create Multiple locations", async () => {
+  test("Create Multiple Locations", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
       await chargingStationService.createLocation(stationModel._id, testLocations[i]);
@@ -42,7 +42,7 @@ suite("location API tests", () => {
     }
   });
 
-  test("Delete locationApi", async () => {
+  test("Delete LocationApi", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
       await chargingStationService.createLocation(stationModel._id, testLocations[i]);
@@ -57,7 +57,7 @@ suite("location API tests", () => {
     assert.equal(returnedLocations.length, 0);
   });
 
-  test("denormalised Station", async () => {
+  test("Denormalised Station", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
       await chargingStationService.createLocation(stationModel._id, testLocations[i]);
