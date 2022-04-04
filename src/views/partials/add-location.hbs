@@ -1,0 +1,17 @@
+<form class="box" action="/station/{{station._id}}/addLocation" method="POST">
+  <label>Enter Location Details:</label>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter area name" name="name">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter latitude" name="latitude">
+      </div>
+      <div class="field">
+        <input class="input" type="text" placeholder="Enter longitude" name="longitude">
+      </div>
+    </div>
+  </div>
+  <button class="button is-primary">Add Location</button>
+</form>

@@ -1,0 +1,26 @@
+{
+  "name": "placemark",
+  "version": "1.0.0",
+  "description": "A placemark app for electric chargers for vehicles in Ireland",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "lint": "./node_modules/.bin/eslint . --ext .js"
+  },
+  "author": "Varghese Joseph",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "prettier": "^2.6.1"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1",
+    "@hapi/vision": "^6.1.0",
+    "handlebars": "^4.7.7",
+    "uuid": "^8.3.2"
+  }
+}
