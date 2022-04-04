@@ -30,17 +30,19 @@ const __dirname = path.dirname(__filename);
 //     host: "localhost",
 //   });
 
+const result= dotenv.config();
+if (result.error){
+  console.log(result.error.message);
+  process.exit(1)
+}
+
+
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
     host:process.env.HOST,
   });
 
-  const result= dotenv.config();
-  if (result.error){
-    console.log(result.error.message);
-    // process.exit(1)
-  }
 
 
   const swaggerOptions={
