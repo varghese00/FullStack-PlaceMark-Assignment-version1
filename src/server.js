@@ -24,6 +24,12 @@ import { Admin } from "./models/mongo/admin.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// async function init() {
+//   const server = Hapi.server({
+//     port: process.env.PORT || 3000,
+//     host: "localhost",
+//   });
+
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
