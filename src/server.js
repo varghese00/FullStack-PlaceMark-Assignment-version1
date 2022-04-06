@@ -17,8 +17,14 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { apiRoutes } from "./api-routes.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
-import { Admin } from "./models/mongo/admin.js";
+// import { Admin } from "./models/mongo/admin.js";
 
+
+const result= dotenv.config();
+if (result.error){
+  console.log(result.error.message);
+  process.exit(1)
+}
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,17 +36,12 @@ const __dirname = path.dirname(__filename);
 //     host: "localhost",
 //   });
 
-const result= dotenv.config();
-if (result.error){
-  console.log(result.error.message);
-  process.exit(1)
-}
+
 
 
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
-    host:process.env.HOST,
   });
 
 
@@ -120,14 +121,14 @@ async function init() {
   server.route(apiRoutes)
   await server.start();
   console.log("Server running on %s", server.info.uri);
-  console.log(Admin())
+  // console.log(Admin())
 
 }
 
 
 process.on("unhandledRejection", (err) => {
   console.log(err);
-  process.exit(1);
+  // process.exit(1);
 });
 
 
