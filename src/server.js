@@ -20,10 +20,10 @@ import { db } from "./models/db.js";
 // import { Admin } from "./models/mongo/admin.js";
 
 
-const result= dotenv.config();
+const result= dotenv.config({silent: true});
 if (result.error){
   console.log(result.error.message);
-  process.exit(1)
+  // process.exit(1)
 }
 
 
@@ -128,7 +128,7 @@ async function init() {
 
 process.on("unhandledRejection", (err) => {
   console.log(err);
-  // process.exit(1);
+  process.exit(1);
 });
 
 
