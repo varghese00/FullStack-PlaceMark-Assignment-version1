@@ -20,7 +20,7 @@ import { db } from "./models/db.js";
 // import { Admin } from "./models/mongo/admin.js";
 
 
-const result= dotenv.config({silent: true});
+const result= dotenv.config({silent: true});  // changing this to silent: true helped me to deploy it to heroku,it was failing otherwise
 if (result.error){
   console.log(result.error.message);
   // process.exit(1)
