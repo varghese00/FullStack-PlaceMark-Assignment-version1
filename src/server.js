@@ -36,10 +36,10 @@ async function init() {
 
 
 const result= dotenv.config({silent: true});  // changing this to silent: true helped me to deploy it to heroku,it was failing otherwise  if (result.error){
+  if (result.error) {
     console.log(result.error.message);
-    // process.exit(1)
+    // process.exit(1);
   }
-
 
   const swaggerOptions={
     info:{
@@ -117,7 +117,7 @@ const result= dotenv.config({silent: true});  // changing this to silent: true h
   await server.start();
   console.log("Server running on %s", server.info.uri);
 
-
+}
 
 
 process.on("unhandledRejection", (err) => {
