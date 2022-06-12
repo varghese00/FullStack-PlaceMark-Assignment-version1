@@ -30,9 +30,9 @@ async function init() {
     debug:{request:["*"], log:["*"]},
     port: process.env.PORT || 4000,
     host: process.env.HOST,
-    // routes: {cors: {origin:"ignore"}}
+    routes: {cors: {origin:"ignore"}}
     // routes: {cors: {origin:["*"]}}
-    routes:{cors:true}
+    // routes:{cors:true}
 
   });
 
