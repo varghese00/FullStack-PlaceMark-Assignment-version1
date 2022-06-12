@@ -43,6 +43,11 @@ export const chargingStationService={
         return res.data;
       },
 
+      async deleteUser(id) {
+        const res = await axios.delete(`${this.stationUrl}/api/users/${id}`);
+        return res.data;
+      },
+
 
 
 

@@ -16,7 +16,8 @@ export const UserCredentialsSpec = Joi.object()
 export const UserSpec = UserCredentialsSpec.keys({
   firstName: Joi.string().example("Homer").required(),
   lastName: Joi.string().example("Simpson").required(),
-  role:Joi.string().example("admin").optional(),
+  scope: Joi.array().items(Joi.string()).example(["admin"]),
+
 }).label("UserDetails");
 
 
@@ -26,7 +27,7 @@ export const UserSpecPlus = UserSpec.keys({
   __v: Joi.number(),
 }).label("UserDetailsPlus");
 
-export const UserArray = Joi.array().items(UserSpec).label("UserArray");
+export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
 
 
@@ -38,6 +39,10 @@ export const UserArray = Joi.array().items(UserSpec).label("UserArray");
     longitude: Joi.number().example(18).required(),
     category:Joi.string().example("Type 2 Plug").required(),
     description: Joi.string().example("Tesco Shopping Centre").required(),
+    img: Joi.string().optional().example(Joi.object({_id:IdSpec,img:Joi.string()})),
+    stationid: IdSpec,
+
+
 
   })
   .label("Location");

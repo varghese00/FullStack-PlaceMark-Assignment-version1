@@ -28,7 +28,7 @@ export const webRoutes = [
     { method: "GET", path: "/station/{id}", config: stationController.index },
     { method: "GET", path: "/dashboard/deleteStation/{id}", config: dashboardController.deleteStation },
 
-
+    { method: "POST", path: "/station/{id}/uploadLocationImage/{locationid}", config:locationController.uploadImage},
     { method: "POST", path: "/station/{id}/addLocation", config: stationController.addLocation },
     { method: "GET", path: "/station/{id}/deleteLocation/{locationid}", config: stationController.deleteLocation },
     { method: "GET", path: "/station/{id}/location/{locationid}", config: locationController.showLocationView },

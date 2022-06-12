@@ -9,9 +9,9 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
-  role:{
-    type:String,
-    default:"regular"
+  scope:{
+    type:Array,
+    default:["regular"]
   }
 });
 

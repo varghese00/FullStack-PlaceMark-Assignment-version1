@@ -4,10 +4,12 @@ import { LocationSpec } from "../models/joi-schemas.js";
 export const stationController = {
   index: {
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const station = await db.stationStore.getStationById(request.params.id);
       const viewData = {
         name: "Station",
         station: station,
+        user:loggedInUser,
       };
       return h.view("station-view", viewData);
     },

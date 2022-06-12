@@ -9,6 +9,7 @@ export const dashboardController = {
       const viewData = {
         name: "Station Dashboard",
         stations: stations,
+        user:loggedInUser,
       };
       return h.view("dashboard-view", viewData);
     },
@@ -19,8 +20,8 @@ export const dashboardController = {
       payload: StationSpec,
       options: { abortEarly: false },
       failAction: async function (request, h, error) {
-        const loggedInUser = request.auth.credentials;
-        const stations = await db.stationStore.getUserStations(loggedInUser._id);
+        // const loggedInUser = request.auth.credentials;
+        // const stations = await db.stationStore.getUserStations(loggedInUser._id);
         return h.view("dashboard-view", { title: "Add Station error",stations:stations, errors: error.details }).takeover().code(400);
       },
     },

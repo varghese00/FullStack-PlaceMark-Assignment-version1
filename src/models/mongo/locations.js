@@ -12,6 +12,7 @@ const locationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Station",
   },
+  img:{type:String, default:"images/charger-pic.png", _id:String},
 });
 
 export const Location = Mongoose.model("Location", locationSchema);

@@ -2,14 +2,17 @@ import { Station } from "./stations.js";
 import { locationMongoStore } from "./location-mongo-store.js";
 
 export const stationMongoStore = {
+
   async getAllStations() {
     const stations = await Station.find().lean();
     return stations;
   },
 
   async getAllStationsByName() {
-    const stations = await Station.findAll().lean();
-    return stations.name;
+    
+      const stations = await Station.find({},{name:1,_id:0,userid:0,__v:0}).lean();
+      return stations;
+  
   },
 
 

@@ -7,16 +7,25 @@ export const seedData = {
       lastName: "Simpson",
       email: "homer@simpson.com",
       password: "secret",
-      role:"regular"
     
       
     },
+
+    varghese: {
+      firstName: "Varghese",
+      lastName: "Joseph",
+      email: "varghese00@gmail.com",
+      password: "1122",
+      scope:["regular", "admin"]
+    
+      
+    },
+
     marge: {
       firstName: "Marge",
       lastName: "Simpson",
       email: "marge@simpson.com",
       password: "secret",
-      role:"regular"
 
 
     },
@@ -25,7 +34,6 @@ export const seedData = {
       lastName: "Simpson",
       email: "bart@simpson.com",
       password: "secret",
-      role:"regular"
 
 
     },
@@ -34,7 +42,7 @@ export const seedData = {
   stations: {
     _model: "Station",
     county_1: {
-      name: "Waterford",
+      name: "Dublin",
       userid: "->users.bart",
     },
     county_2: {
@@ -56,6 +64,8 @@ export const seedData = {
       category: "Type 1 Plug",
       description: "On-street Parking",
       stationid: "->stations.county_1",
+      // img: {img: "http://res.cloudinary.com/dbtrpap44/image/upload/v1654362586/hjfgty67yhgt56ghyt67.jpg", imgid: "hjfgty67yhgt56ghyt67"}
+
     },
     location_2: {
       name: "Youghal",
@@ -64,6 +74,8 @@ export const seedData = {
       category: "Type 2 Plug",
       description: "Tesco Parking",
       stationid: "->stations.county_2",
+      // img: {img: "http://res.cloudinary.com/dbtrpap44/image/upload/v1654362586/hjfgty67yhgt56ghyt67.jpg", imgid: "hjfgty67yhgt56ghyt67"}
+
     },
     location_3: {
       name: "Tralee",
@@ -72,6 +84,8 @@ export const seedData = {
       category: "Tesla Super Charger",
       description: "Fuel Station",
       stationid: "->stations.county_3",
+      // img: {img: "http://res.cloudinary.com/dbtrpap44/image/upload/v1654362586/hjfgty67yhgt56ghyt67.jpg", imgid: "hjfgty67yhgt56ghyt67"}
+
     },
   },
 };

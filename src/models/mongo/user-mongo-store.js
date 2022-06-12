@@ -3,6 +3,9 @@ import { User } from "./user.js";
 export const userMongoStore = {
   async getAllUsers() {
     const users = await User.find().lean();
+    // const users = await User.find({}).lean();
+
+    console.log("users are ", users);
     return users;
   },
 
@@ -36,7 +39,9 @@ export const userMongoStore = {
 
   async deleteUserById(id) {
     try {
+      const user = await User.findOne({ _id:id });
       await User.deleteOne({ _id: id });
+      console.log("My account is deleted")
     } catch (error) {
       console.log("bad id");
     }
@@ -53,6 +58,9 @@ export const userMongoStore = {
     user.email = updatedUser.email;
     user.password = updatedUser.password;
     await user.save();
+    const savedUser = await User.findOne({ "_id": userid}).lean();
+    return savedUser;
+
   },
 
 

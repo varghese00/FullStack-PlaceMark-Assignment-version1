@@ -17,33 +17,29 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { apiRoutes } from "./api-routes.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
-// import { Admin } from "./models/mongo/admin.js";
+import { Admin } from "./models/mongo/admin.js";
 
-
-const result= dotenv.config({silent: true});  // changing this to silent: true helped me to deploy it to heroku,it was failing otherwise
-if (result.error){
-  console.log(result.error.message);
-  // process.exit(1)
-}
 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// async function init() {
-//   const server = Hapi.server({
-//     port: process.env.PORT || 3000,
-//     host: "localhost",
-//   });
-
-
-
-
 async function init() {
   const server = Hapi.server({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 4000,
+    host: "localhost",
+    routes: { cors: true },
+
   });
 
+// console.log(Admin())
+
+
+  const result= dotenv.config();
+  if (result.error){
+    console.log(result.error.message);
+    process.exit(1)
+  }
 
 
   const swaggerOptions={
@@ -121,7 +117,6 @@ async function init() {
   server.route(apiRoutes)
   await server.start();
   console.log("Server running on %s", server.info.uri);
-  // console.log(Admin())
 
 }
 

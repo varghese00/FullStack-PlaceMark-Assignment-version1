@@ -10,6 +10,7 @@ export const stationApi = {
     },    handler: async function (request, h) {
         try {
             const stations = await db.stationStore.getAllStations();
+            console.log("Checking stations array ", stations)
             return stations;
           } catch (err) {
             return Boom.serverUnavailable("Database Error");
@@ -42,14 +43,39 @@ export const stationApi = {
     validate:{ params: { id: IdSpec }, failAction: validationError },
   },
 
+
+  findByUserId: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const stations = await db.stationStore.getUserStations(request.auth.credentials._id);
+        console.log(stations)
+        console.log("Stations are retreived")
+        return stations;
+      } catch (err) {
+        console.log("Stations are not retreived")
+
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    response: { schema: StationArraySpec, failAction: validationError },
+    description: "Get all Stations",
+    notes: "Returns all Stations",
+  },
+
   create: {
     auth: {
       strategy: "jwt",
     },    handler: async function (request, h) {
         try{
-            const station= request.payload;
+            const station=request.payload;
+            station.userid=request.auth.credentials._id;
             const newStation= await db.stationStore.addStation(station);
             if (newStation){
+              console.log("New station object " , newStation , " is added staion name is " , station.name)
                 return h.response(newStation).code(201);
             }
             return Boom.badImplementation("Error creating the station");
@@ -62,7 +88,7 @@ export const stationApi = {
     response: {schema: StationSpecPlus, failAction:validationError},
     description: "Create a station",
     notes: "Returns newly created station",
-    validate:{ payload: StationSpec, failAction: validationError },
+    validate:{ payload: StationSpecPlus, failAction: validationError },
   },
 
   deleteOne: {
@@ -75,6 +101,8 @@ export const stationApi = {
               return Boom.notFound("No station with this id");
             }
             await db.stationStore.deleteStationById(station._id);
+            console.log("Staion ", station.name , " is deletetd")
+
             return h.response().code(204);
           } catch (err) {
             return Boom.serverUnavailable("No station with this id");

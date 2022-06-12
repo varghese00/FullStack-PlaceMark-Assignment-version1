@@ -49,6 +49,12 @@ suite("User API tests", () => {
       assert.deepEqual(users[0], returnedUser);
     });
 
+
+    test("get all users - success", async () => {
+      const returnedUsers = await chargingStationService.getAllUsers();
+      assert.deepEqual(users, returnedUsers);
+    })
+
     test("get a user - fail", async () => {
       try {
         const returnedUser = await chargingStationService.getUser("1234");
