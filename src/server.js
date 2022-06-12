@@ -27,7 +27,6 @@ const __dirname = path.dirname(__filename);
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 4000,
-    silent:true,
     // host: "localhost",
     routes: { cors: true },
 
@@ -36,8 +35,7 @@ async function init() {
 // console.log(Admin())
 
 
-  const result= dotenv.config();
-  if (result.error){
+const result= dotenv.config({silent: true});  // changing this to silent: true helped me to deploy it to heroku,it was failing otherwise  if (result.error){
     console.log(result.error.message);
     // process.exit(1)
   }
