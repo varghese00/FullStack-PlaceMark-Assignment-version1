@@ -28,7 +28,7 @@ const __dirname = path.dirname(__filename);
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 4000,
-    host: ["*"],
+    host: "*",
     // routes: {cors: {origin:"ignore"}}
     routes: {cors: {origin:["*"]}}
 
