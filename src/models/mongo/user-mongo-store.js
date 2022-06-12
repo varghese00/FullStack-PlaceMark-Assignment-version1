@@ -26,6 +26,7 @@ export const userMongoStore = {
 
   async getUserByEmail(email) {
     const user = await User.findOne({ email: email }).lean();
+    console.log(user);
     return user;
   },
 
