@@ -64,7 +64,6 @@ export const seedData = {
       category: "Type 1 Plug",
       description: "On-street Parking",
       stationid: "->stations.county_1",
-      // img: {img: "http://res.cloudinary.com/dbtrpap44/image/upload/v1654362586/hjfgty67yhgt56ghyt67.jpg", imgid: "hjfgty67yhgt56ghyt67"}
 
     },
     location_2: {
@@ -74,7 +73,6 @@ export const seedData = {
       category: "Type 2 Plug",
       description: "Tesco Parking",
       stationid: "->stations.county_2",
-      // img: {img: "http://res.cloudinary.com/dbtrpap44/image/upload/v1654362586/hjfgty67yhgt56ghyt67.jpg", imgid: "hjfgty67yhgt56ghyt67"}
 
     },
     location_3: {
@@ -84,7 +82,6 @@ export const seedData = {
       category: "Tesla Super Charger",
       description: "Fuel Station",
       stationid: "->stations.county_3",
-      // img: {img: "http://res.cloudinary.com/dbtrpap44/image/upload/v1654362586/hjfgty67yhgt56ghyt67.jpg", imgid: "hjfgty67yhgt56ghyt67"}
 
     },
   },

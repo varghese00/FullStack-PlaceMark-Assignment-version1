@@ -50,10 +50,7 @@ export const accountsController = {
     },
     handler: async function (request, h) {
       const { email, password } = request.payload;
-      // const users=await db.userStore.getAllUsers();
-      // const user=await db.userStore.getUserByRole(email)
       const user = await db.userStore.getUserByEmail(email);
-    
       if ( !user || user.password !== password ) {
         return h.redirect("/");
       }

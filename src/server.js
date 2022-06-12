@@ -1,3 +1,4 @@
+import Bell from "@hapi/bell";
 import Hapi from "@hapi/hapi";
 import Vision from "@hapi/vision";
 import Handlebars from "handlebars";
@@ -10,6 +11,7 @@ import Inert from "@hapi/inert"
 import HapiSwagger from "hapi-swagger";
 import jwt from "hapi-auth-jwt2";
 import { validate } from "./api/jwt-utils.js";
+
 
 
 
@@ -80,12 +82,25 @@ const result= dotenv.config({silent: true});  // changing this to silent: true h
 
 
   await server.register(jwt);
+
+
   server.auth.strategy("jwt", "jwt", {
     key: process.env.cookie_password,
     validate: validate,
     verifyOptions: { algorithms: ["HS256"] }
   });
 
+
+
+await server.register(Bell);
+
+server.auth.strategy("github-oauth","bell",{
+  provider: "github",
+  password: "ThisIsASecretCookiePasswordForGitHub",
+  clientId: process.env.GIT_CLIENT_ID,
+  clientSecret: process.env.GIT_CLIENT_SECRET,
+  isSecure: false,
+});
 
 
 
