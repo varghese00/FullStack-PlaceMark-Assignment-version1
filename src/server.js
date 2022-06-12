@@ -29,7 +29,8 @@ async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 4000,
     // host: "localhost",
-    routes: { cors: true },
+    // routes: {cors: {origin:"ignore"}}
+    routes: {cors: {origin:["*"]}}
 
   });
 
