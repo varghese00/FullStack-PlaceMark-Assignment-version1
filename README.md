@@ -19,6 +19,10 @@
 - Bulma
 - Fontawesome
 - Swagger
+<<<<<<< HEAD
+=======
+- Cloudinary
+>>>>>>> 573c1e69a2f6e6c4e104b2d0c662a544be0a93f6
 
 ---
 
@@ -27,3 +31,7 @@
 [Heroku URL](https://pacific-tundra-14771.herokuapp.com/)
 
 [Glitch URL](https://habitual-maroon-cushion.glitch.me)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 573c1e69a2f6e6c4e104b2d0c662a544be0a93f6
