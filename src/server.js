@@ -31,7 +31,8 @@ async function init() {
     port: process.env.PORT || 4000,
     host: process.env.HOST,
     // routes: {cors: {origin:"ignore"}}
-    routes: {cors: {origin:["*"]}}
+    // routes: {cors: {origin:["*"]}}
+    routes:{cors:true}
 
   });
 
