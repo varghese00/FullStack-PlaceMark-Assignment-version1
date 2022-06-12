@@ -19,11 +19,9 @@
 - Bulma
 - Fontawesome
 - Swagger
+- Cloudinary
 <<<<<<< HEAD
 =======
-- Cloudinary
->>>>>>> 573c1e69a2f6e6c4e104b2d0c662a544be0a93f6
-
 ---
 
 ## Website URLs
