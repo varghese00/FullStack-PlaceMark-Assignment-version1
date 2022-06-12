@@ -27,7 +27,8 @@ const __dirname = path.dirname(__filename);
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 4000,
-    host: "localhost",
+    silent:true,
+    // host: "localhost",
     routes: { cors: true },
 
   });
@@ -38,7 +39,7 @@ async function init() {
   const result= dotenv.config();
   if (result.error){
     console.log(result.error.message);
-    process.exit(1)
+    // process.exit(1)
   }
 
 
