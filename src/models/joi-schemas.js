@@ -4,8 +4,8 @@ import Joi from "joi";
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
 export const UserCredentialsSpec = Joi.object()
   .keys({
-    email: Joi.string().email().example("homer@simpson.com").required(),
-    password: Joi.string().example("secret").required(),
+    email: Joi.string().email().example("homer@simpson.com").regex(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/).required(),
+    password: Joi.string().example("secret").regex(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$/).required(),
   })
   .label("UserCredentials");
 
@@ -14,8 +14,8 @@ export const UserCredentialsSpec = Joi.object()
 
 
 export const UserSpec = UserCredentialsSpec.keys({
-  firstName: Joi.string().example("Homer").required(),
-  lastName: Joi.string().example("Simpson").required(),
+  firstName: Joi.string().example("Homer").regex(/^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/).required(),
+  lastName: Joi.string().example("Simpson").regex(/^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/).required(),
   scope: Joi.array().items(Joi.string()).example(["admin"]),
 
 }).label("UserDetails");
@@ -58,7 +58,7 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
   
   export const StationSpec = Joi.object()
   .keys({
-    name: Joi.string().required().example("Waterford"),
+    name: Joi.string().required().example("Waterford").regex(/^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/).required(),
     userid: IdSpec,
     locations: LocationArraySpec,
   })
