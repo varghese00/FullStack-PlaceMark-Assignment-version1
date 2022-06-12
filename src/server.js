@@ -117,7 +117,7 @@ const result= dotenv.config({silent: true});  // changing this to silent: true h
   await server.start();
   console.log("Server running on %s", server.info.uri);
 
-}
+
 
 
 process.on("unhandledRejection", (err) => {
