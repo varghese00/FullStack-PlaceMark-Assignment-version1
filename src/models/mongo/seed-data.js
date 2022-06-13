@@ -33,7 +33,7 @@ export const seedData = {
       firstName: "Bart",
       lastName: "Simpson",
       email: "bart@simpson.com",
-      password: "secret",
+      password: "$2a$10$21LTpgZAC9c/KbR3ojrQKuGJS0gGgH9IfzSQSGAgXE9kS12tp3g56",
 
 
     },
