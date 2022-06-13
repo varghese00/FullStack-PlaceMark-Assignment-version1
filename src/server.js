@@ -1,4 +1,4 @@
-import Bell from "@hapi/bell";
+// import Bell from "@hapi/bell";
 import Hapi from "@hapi/hapi";
 import Vision from "@hapi/vision";
 import Handlebars from "handlebars";
@@ -92,15 +92,15 @@ const result= dotenv.config({silent: true});  // changing this to silent: true h
 
 
 
-await server.register(Bell);
+// await server.register(Bell);
 
-server.auth.strategy("github-oauth","bell",{
-  provider: "github",
-  password: "ThisIsASecretCookiePasswordForGitHub",
-  clientId: process.env.GIT_CLIENT_ID,
-  clientSecret: process.env.GIT_CLIENT_SECRET,
-  isSecure: false,
-});
+// server.auth.strategy("github-oauth","bell",{
+//   provider: "github",
+//   password: "ThisIsASecretCookiePasswordForGitHub",
+//   clientId: process.env.GIT_CLIENT_ID,
+//   clientSecret: process.env.GIT_CLIENT_SECRET,
+//   isSecure: false,
+// });
 
 
 
