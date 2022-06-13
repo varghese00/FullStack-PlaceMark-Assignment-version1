@@ -21,6 +21,7 @@ export const userMongoStore = {
     const newUser = new User(user);
     const userObj = await newUser.save();
     const u = await this.getUserById(userObj._id);
+    console.log("user is ", u)
     return u;
   },
 

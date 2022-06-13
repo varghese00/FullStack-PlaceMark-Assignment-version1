@@ -3,11 +3,13 @@ import Joi from "joi";
 
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
 export const UserCredentialsSpec = Joi.object()
-  .keys({
-    email: Joi.string().email().example("homer@simpson.com").regex(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/).required(),
-    password: Joi.string().example("secret").regex(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$/).required(),
-  })
-  .label("UserCredentials");
+.keys({
+  email: Joi.string().email().example("homer@simpson.com").regex(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/).required(),
+  // password: Joi.string().example("secret").regex(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$/).required(),
+  password: Joi.string().example("secret").required(),
+
+})
+.label("UserCredentials");
 
   
 

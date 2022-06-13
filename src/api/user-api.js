@@ -14,22 +14,19 @@ export const userApi = {
 
   authenticate: {
     auth: false,
-      handler: async function(request, h) {
+    handler: async function (request, h) {
       try {
-        const {email, password} = request.payload;
-        const user = await db.userStore.getUserByEmail(email);
-        const passwordsMatch = await bcrypt.compare(password, user.password);
-        if (!user || !passwordsMatch) {
+        const user = await db.userStore.getUserByEmail(request.payload.email);
+        if (!user) {
           return Boom.unauthorized("User not found");
-        // eslint-disable-next-line no-else-return
-        } else if (user.password !== request.payload.password) {
-          return Boom.unauthorized("Invalid password");
-        } else {
-          const token = createToken(user);
-          // console.log(token);
-          // console.log(user);
-          return h.response({ success: true, token: token }).code(201);
         }
+        const passwordsMatch = await bcrypt.compare(request.payload.password, user.password);
+        if (!passwordsMatch) {
+          return Boom.unauthorized("Invalid password");
+        }
+        const token = createToken(user);
+        console.log("jwt token ", token)
+        return h.response({ success: true, token: token }).code(201);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
@@ -47,13 +44,12 @@ export const userApi = {
     auth: false,
     handler: async function(request, h) {
       try {
-        const user = await db.userStore.addUser(request.payload);
+        const user = request.payload;
         user.password = await bcrypt.hash(user.password, saltRounds);
+        console.log("hashed password is " ,user.password)
         await db.userStore.addUser(user);
         if (user) {
-          // console.log(user);
-          // console.log(user._id);
-
+          console.log("signed up user is ",user)
           return h.response(user).code(201);
         }
         return Boom.badImplementation("error creating user");
@@ -66,6 +62,7 @@ export const userApi = {
     notes: "Returns the newly created user",
     validate: { payload: UserSpec, failAction: validationError },
     response: { schema: UserSpecPlus, failAction: validationError },
+    
   },
 
 

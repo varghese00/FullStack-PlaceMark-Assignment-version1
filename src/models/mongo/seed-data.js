@@ -6,7 +6,7 @@ export const seedData = {
       firstName: "Homer",
       lastName: "Simpson",
       email: "homer@simpson.com",
-      password: "$2a$10$BbHdSQu.SlSqbSpzeaJrOenOtr2033Z3hkB66JfvUNLiCnkRTAp22",
+      password: "$2b$10$stzU4kIBD1PuS5GiSR.KjupkzGE8EJCbQMmXiaJ2NQ6tke0xi.cxi",
     
       
     },
@@ -15,7 +15,7 @@ export const seedData = {
       firstName: "Varghese",
       lastName: "Joseph",
       email: "varghese00@gmail.com",
-      password: "8993f901c3d7f1992b490bbd2daca111061de849360cd204193aea54f30e3d62",
+      password: "$2b$10$stzU4kIBD1PuS5GiSR.KjupkzGE8EJCbQMmXiaJ2NQ6tke0xi.cxi",
       scope:["regular", "admin"]
     
       
@@ -25,7 +25,7 @@ export const seedData = {
       firstName: "Marge",
       lastName: "Simpson",
       email: "marge@simpson.com",
-      password: "$2a$10$21LTpgZAC9c/KbR3ojrQKuGJS0gGgH9IfzSQSGAgXE9kS12tp3g56",
+      password: "$2b$10$stzU4kIBD1PuS5GiSR.KjupkzGE8EJCbQMmXiaJ2NQ6tke0xi.cxi",
 
 
     },
@@ -33,7 +33,7 @@ export const seedData = {
       firstName: "Bart",
       lastName: "Simpson",
       email: "bart@simpson.com",
-      password: "$2a$10$21LTpgZAC9c/KbR3ojrQKuGJS0gGgH9IfzSQSGAgXE9kS12tp3g56",
+      password: "$2b$10$stzU4kIBD1PuS5GiSR.KjupkzGE8EJCbQMmXiaJ2NQ6tke0xi.cxi",
 
 
     },
